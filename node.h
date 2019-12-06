@@ -147,7 +147,6 @@ class Node {
             return index;
         }
 
-        // trabajar con erase de vector
         void removeKeyFromLeaf(int index)
         {
             keys.erase(keys.begin() + index);
