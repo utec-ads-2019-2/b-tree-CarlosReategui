@@ -4,6 +4,7 @@
 #include <vector>
 #include <cmath>
 #include <iostream>
+#include <queue>
 
 using namespace std;
 
@@ -21,6 +22,7 @@ class Node {
     public: 
         Node(unsigned int t, bool isLeaf = true) : t(t), isLeaf(isLeaf)
         {
+            // Lo del resize lo puse por defecto, pero no es tan buena idea, podríamos simplemente usar push_back
             keys.resize(2 * t - 1);
             children.resize(2 * t);
             numberOfKeys = 0;
@@ -290,6 +292,31 @@ class Node {
                     node->deleteAll();
             delete this;
         }
+
+         void recorrerNodes() {
+            queue<pair<Node<T>*, int>> next;
+            next.push(pair<Node<T>*, int>(this, 0));
+
+            while (!next.empty()) {
+                auto temp = next.front();
+                next.pop();
+
+                temp.first->printIndexes(temp.second);
+
+                for (int i = 0; i < temp.first->children.size(); i++) {
+                    next.push(pair<Node<T>*, int>(temp.first->children[i], temp.second + 2));
+                }
+
+                cout << endl;
+            }  
+    }
+
+    void printIndexes(int level) {
+        cout << level << ": ";
+        for (int i = 0; i < keys.size(); i++) {
+            cout << keys[i] << " ";
+        }
+    }
 
         ~Node()
         {

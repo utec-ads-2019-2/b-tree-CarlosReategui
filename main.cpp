@@ -7,21 +7,21 @@ using namespace std;
 int main()
 {
     BTree<int> *bTree = new BTree<int>(2);
-    for (int i = 1; i <= 5; ++i)
+    for (int i = 1; i <= 1; ++i)
         bTree->insert(i);
 
-    bTree->print();
+    //bTree->print();
 //    for (int i = 40; i >= 1; --i)
 //        bTree->remove(i);
 
-    bTree->print();
+    //bTree->print();
 
     //delete bTree;
 
 
+    // Hay un segmentation fault en el destructor, probablemente un puntero queda al aire
 
-
-    bTree->remove(1);
+    //bTree->remove(1);
 
 
     bTree->print();

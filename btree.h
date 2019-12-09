@@ -69,13 +69,16 @@ class BTree
                 root->isLeaf ? root = nullptr : root = root->children[0];
                 delete tempRoot;
             }
+
+            // Qué se retorna aquí?
         }
 
         void print()
         {
             if (root)
             {
-                root->printInOrder();
+                //root->printInOrder();
+                root->recorrerNodes();
                 cout << endl;
             }
         }
